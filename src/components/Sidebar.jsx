@@ -16,7 +16,7 @@ import { FiLogIn } from "react-icons/fi";
 function Sidebar() {
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard" },
+    { title: "Dashboard",icon:<FiLogIn/> },
     { title: "Sign In", icon: <FiLogIn /> },
     { title: "Sign Up", icon: <FiLogIn /> },
     { title: "Contact Us", icon: <AiOutlineMail /> },
@@ -72,25 +72,23 @@ function Sidebar() {
         </div>
         <ul className="pt-2">
           {Menus.map((menu, index) => (
-            <>
-              <li
-                key={index}
-                className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
-                  menu.spacing ? "mt-9" : "mt-2"
+            <li
+              key={index}
+              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md ${
+                menu.spacing ? "mt-9" : "mt-2"
+              }`}
+            >
+              <span className="text-2xl block float-left">
+                {menu.icon ? menu.icon : <RiDashboardFill />}
+              </span>
+              <span
+                className={`text-base font-medium flex-1 duration-200 ${
+                  !open && "hidden"
                 }`}
               >
-                <span className="text-2xl block float-left">
-                  {menu.icon ? menu.icon : <RiDashboardFill />}
-                </span>
-                <span
-                  className={`text-base font-medium flex-1 duration-200 ${
-                    !open && "hidden"
-                  }`}
-                >
-                  {menu.title}
-                </span>
-              </li>
-            </>
+                {menu.title}
+              </span>
+            </li>
           ))}
         </ul>
       </div>
